@@ -1,0 +1,288 @@
+................Nesting....................
+
+Sass::::::::::::::::::
+
+#navbar{
+  width:80%;
+  border:solid red 1px;
+  float:left;
+  padding:5px;
+  
+  ul{
+    list-style-type:none;
+  }
+  
+  li{
+    flaot:right;
+  
+    a{
+      font-weight:bold;
+      color:red;
+    }
+  
+  }   
+  
+}
+
+		||
+
+css::::::::::::::::::::::::
+
+#navbar {
+  width: 80%;
+  border: solid red 1px;
+  float: left;
+  padding: 5px;
+}
+#navbar ul {
+  list-style-type: none;
+}
+#navbar li {
+  flaot: right;
+}
+#navbar li a {
+  font-weight: bold;
+  color: red;
+}
+
+
+
+
+...........calculations....................
+
+
+sass::::::::::::::::::::::::::
+
+$total-width:600px;
+$sidebar-width:100px;
+$spacing:20px;
+
+#content{
+  width:$total-width - $sidebar-width;
+  padding:$spacing*2;
+}
+#sidebar{
+  width:$sidebar-width;
+  margin-left:$spacing;
+}
+
+css::::::::::::::::::::::
+
+#content {
+  width: 500px;
+  padding: 40px;
+}
+
+#sidebar {
+  width: 100px;
+  margin-left: 20px;
+}
+
+
+.......................MIXINS........................
+
+sass::::::::::::::::::::::
+
+@mixin my-mixin-rounded-border{
+  border-radius:4px;
+  -moz-border-radius:4px;
+  -webkit-border-radius:4px;
+}
+
+.rounded-box{
+  @include my-mixin-rounded-border;
+  width:250px;
+}
+
+#navigation{
+  ul{
+    li{
+      @include my-mixin-rounded-border;    
+    }
+  }
+}
+
+css:::::::::::::::::::::::
+
+.rounded-box {
+  border-radius: 4px;
+  -moz-border-radius: 4px;
+  -webkit-border-radius: 4px;
+  width: 250px;
+}
+
+#navigation ul li {
+  border-radius: 4px;
+  -moz-border-radius: 4px;
+  -webkit-border-radius: 4px;
+}
+
+
+...............MIXINs with arguments......................
+
+sass:::::::::::::::::::::::::
+
+@mixin my-mixin-rounded-border($radius){
+  border-radius:$radius;
+  -moz-border-radius:$radius;
+  -webkit-border-radius:$radius;
+}
+
+.rounded-box{
+  @include my-mixin-rounded-border(4px);
+  width:250px;
+}
+
+#navigation{
+  ul{
+    li{
+      @include my-mixin-rounded-border(2px);    
+    }
+  }
+}
+
+css::::::::::::::::::::::::::
+
+.rounded-box {
+  border-radius: 4px;
+  -moz-border-radius: 4px;
+  -webkit-border-radius: 4px;
+  width: 250px;
+}
+
+#navigation ul li {
+  border-radius: 2px;
+  -moz-border-radius: 2px;
+  -webkit-border-radius: 2px;
+}
+
+
+..................MIXINs with default values...............................
+
+sass:::::::::::::::::::::::::::::
+
+@mixin my-mixin-rounded-border($radius:2px){
+  border-radius:$radius;
+  -moz-border-radius:$radius;
+  -webkit-border-radius:$radius;
+}
+
+.rounded-box{
+  @include my-mixin-rounded-border(5px);
+  width:250px;
+}
+
+#navigation{
+  ul{
+    li{
+      @include my-mixin-rounded-border;    
+    }
+  }
+}
+
+
+css:::::::::::::::::::::::::::::::
+
+.rounded-box {
+  border-radius: 5px;
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  width: 250px;
+}
+
+#navigation ul li {
+  border-radius: 2px;
+  -moz-border-radius: 2px;
+  -webkit-border-radius: 2px;
+}
+
+
+..............use mixin................................................................
+
+css:::::::::::::::::
+
+h1{
+  color:blue;
+  font-size:12px;
+}
+
+sass::::::::::::::::
+
+????????
+
+
+...................inheritance..(using %)...................................................
+
+sass::::::::::::::::::::::::::::::::::::::::::
+
+%box-border{
+  border:1px solid #ccc;
+  border-radius:10px;
+}
+.box-1{
+  @extend %box-border;
+  width:200px;
+  height:200px;
+}
+.box-2{
+  @extend %box-border;
+  width:300px;
+  height:300px;
+}
+
+css:::::::::::::::::::::::::::::::::::::::::::
+
+.box-1, .box-2 {
+  border: 1px solid #ccc;
+  border-radius: 10px;
+}
+
+.box-1 {
+  width: 200px;
+  height: 200px;
+}
+
+.box-2 {
+  width: 300px;
+  height: 300px;
+}
+
+
+..............inheritance (using .).....................................
+
+sass::::::::::::::::::::::::::::::::::::::
+
+.box-border{
+  border:1px solid #ccc;
+  border-radius:10px;
+}
+.box-1{
+  @extend .box-border;
+  width:200px;
+  height:200px;
+}
+.box-2{
+  @extend .box-border;
+  width:300px;
+  height:300px;
+}
+
+
+css::::::::::::::::::::::::::::::::::::::
+
+.box-border, .box-1, .box-2 {
+  border: 1px solid #ccc;
+  border-radius: 10px;
+}
+
+.box-1 {
+  width: 200px;
+  height: 200px;
+}
+
+.box-2 {
+  width: 300px;
+  height: 300px;
+}
+
+
