@@ -1,0 +1,29 @@
+html:::
+-------
+<p>
+Name : <span data-bind="text:firstName"></span>
+</p>
+<button id="btn" data-bind="click:updateName">update</button>
+
+............................................................
+
+javascript 
+function viewModel(){
+	this.firstName = ko.observable("prashant");
+  this.lastName = ko.observable("Kashid");
+  
+  this.updateName = function(){
+  	this.firstName('pk');
+  };
+  
+};
+
+ko.applyBindings(new viewModel);
+
+.............................................................
+
+
+Name : pk
+ --------
+| update |
+ --------
